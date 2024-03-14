@@ -17,12 +17,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <div class="w3-bar w3-topbar w3-bottombar w3-border-black w3-yellow w3-large">
   <a href="#" class="w3-bar-item w3-button w3-black w3-mobile w3-text-yellow"><i class="fa fa-bus w3-margin-right"></i>VanApp</a>
   <a href="#rooms" class="w3-bar-item w3-button w3-mobile">Sou condutor</a>
-  <a href="#about" class="w3-bar-item w3-button w3-mobile">Sobre</a>
+  <a href="#Sobre" class="w3-bar-item w3-button w3-mobile">Sobre</a>
   <a href="#contact" class="w3-bar-item w3-button w3-mobile">Contato</a>
 </div>
 <!-- Header -->
 <header class="w3-display-container w3-content" style="max-width:1500px;">
-  <img class="w3-image" src="../img/van-background.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
+  <img class="w3-image" src="../img/van-background.jpg" alt="The Hotel" style="min-width:1000px" width="1500px" height="800">
   <!-- Conteiner Client -->
   <div class="w3-display-left w3-padding w3-col l6 m8" style="visibility: visible">
     <div class="w3-container w3-yellow">
@@ -31,7 +31,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <div class="w3-container w3-white w3-padding-16">
       <form action="/action_page.php" target="_blank">
         <div class="w3-row-padding" style="margin:0 -16px;">
-          <div class="w3-half w3-margin-bottom">
+          <div class="w3-margin-bottom">
             <label><i class="fa fa-clock-o"></i> Seu Período:</label>
             <select class="w3-select w3-border" name="option">
               <option value="" disabled selected>Escolha a opção</option>
@@ -66,58 +66,115 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
             </select>
           </div>
         </div>
-        <button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-search w3-margin-right"></i> Pesquisar</button>
+        <button class="w3-button w3-black" type="submit"><i class="fa fa-search w3-margin-right"></i> Pesquisar</button>
       </form>
     </div>
   </div>
   <!-- Conteiner Driver -->
   <div class="w3-display-left w3-padding w3-col l6 m8" style="visibility: hidden">
     <div class="w3-container w3-yellow">
-      <h2><i class="fa fa-bus w3-margin-right"></i>Procurando van escolar?</h2>
+      <h2><i class="fa fa-bus w3-margin-right"></i>Bem vindo Condutor!</h2>
     </div>
-    <div class="w3-container w3-white w3-padding-16">
+    <div name="cadastro" class="w3-container w3-white w3-padding-16">
       <form action="/action_page.php" target="_blank">
-        <div class="w3-row-padding" style="margin:0 -16px;">
-          <div class="w3-half w3-margin-bottom">
-            <label><i class="fa fa-clock-o"></i> Seu Período:</label>
-            <select class="w3-select w3-border" name="option">
-              <option value="" disabled selected>Escolha a opção</option>
-              <option value="1">Período da Manhã</option>
-              <option value="2">Período da Tarde</option>
-              <option value="3">Período da Noite</option>
-              <option value="3">Período Integral</option>
-            </select>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+          <div class="w3-half">
+            <label>CNH:</label>
+            <input class="w3-input w3-border">
+          </div>
+          <div class="w3-half">
+            <label>Nome:</label>
+            <input class="w3-input w3-border">
           </div>
         </div>
         <div class="w3-row-padding" style="margin:8px -16px;">
-          <div class="w3-margin-bottom">
-            <label><i class="fa fa-graduation-cap"></i> Sua Escola:</label>
-            <select class="w3-select w3-border" name="option">
-              <option value="" disabled selected>Escolha a opção</option>
-              <option value="1">Instituto Federal de São Paulo - Campus Hortolândia</option>
-              <option value="2">Sesi - 437</option>
-              <option value="3">Manoel Ignácio</option>
-              <option value="3">Zanuch</option>
-            </select>
+          <div class="w3-half">
+            <label>Celular 1:</label>
+            <input class="w3-input w3-border" placeholder="(99)99999-9999">
+          </div>
+          <div class="w3-half">
+            <label>Celular 2:</label>
+            <input class="w3-input w3-border" placeholder="(99)99999-9999">
           </div>
         </div>
         <div class="w3-row-padding" style="margin:8px -16px;">
-          <div class="w3-margin-bottom">
-            <label><i class="fa fa-home"></i> Seu Bairro:</label>
-            <select class="w3-select w3-border" name="option">
-              <option value="" disabled selected>Escolha a opção</option>
-              <option value="1">São Pedro</option>
-              <option value="2">Nova Hortolândia</option>
-              <option value="3">Minda</option>
-              <option value="3">Nova europa</option>
-            </select>
+          <div class="w3-half">
+            <label>Email 1:</label>
+            <input class="w3-input w3-border">
+          </div>
+          <div class="w3-half">
+            <label>Email 2:</label>
+            <input class="w3-input w3-border">
           </div>
         </div>
-        <button class="w3-button w3-dark-grey" type="submit"><i class="fa fa-search w3-margin-right"></i> Pesquisar</button>
+        <button class="w3-right w3-button w3-black" type="submit"><i class="fa fa-arrow-right w3-margin-right"></i> Próximo</button>
       </form>
-    </div>
+    </div> 
   </div>
 </header>
+<!-- Page content -->
+<div class="w3-content" style="max-width:1532px;">
+  <!-- Search Result -->
+  <div class="w3-container w3-margin-top" id="Pesquisa">
+    <h3>Condutores</h3>
+  </div>
 
+  <div class="w3-row-padding w3-padding-16">
+    <div class="w3-third w3-margin-bottom">
+      <img src="/w3images/room_single.jpg" alt="Norway" style="width:100%">
+      <div class="w3-container w3-white">
+        <h3>Tia Fabi</h3>
+        <h6 class="w3-opacity">From $99</h6>
+        <p>Single bed</p>
+        <p>15m<sup>2</sup></p>
+        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+      </div>
+    </div>
+    <div class="w3-third w3-margin-bottom">
+      <img src="../img/tio-jorge.jpg" alt="Norway" style="width:100%">
+      <div class="w3-container w3-white">
+        <h3>Tio Jorge</h3>
+        <h6 class="w3-opacity">
+        <b>Celulares:</b>
+        <p>(11)11111-1111
+        <br>(22)22222-2222</br>
+        </p>
+        </h6>
+        <p>Queen-size bed</p>
+        <p>25m<sup>2</sup></p>
+        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
+        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+      </div>
+    </div>
+    <div class="w3-third w3-margin-bottom">
+      <img src="/w3images/room_deluxe.jpg" alt="Norway" style="width:100%">
+      <div class="w3-container w3-white">
+        <h3>Vanessa Escolar</h3>
+        <h6 class="w3-opacity">From $199</h6>
+        <p>King-size bed</p>
+        <p>40m<sup>2</sup></p>
+        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i></p>
+        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="w3-row-padding" id="Sobre">
+    <div class="w3-col m3 l6">
+      <h3>Sobre</h3>
+      <h6>Esse site nasceu como um projeto de TCC de um aluno de ADS - Análise e desenvolvimento de sistemas. Foi desenvolvido com o intuito de facilitar a vida de alunos e condutores, 
+        uma vez que ambos perdem tempo com a pesquisa/gerenciamento de vagas disponíveis na logística do transporte escolar, agradeço antecipadamente todos os condutores que aderirem 
+        a esse projeto, a ideia é quanto mais pessoas aderirem, menos valor ser gasto com propaganda e menos tempo perdido com buscas falhas por vagas lotadas.</h6>
+      <p><b>Realizado por:</b> Lucas Vilela piza.
+      <br>Estudante de Análise e Desenvolvimento de sistemas no Instituto Federal de São Paulo - campus Hortolândia.</br>
+      </p>
+    </div>
+    <div class="w3-col m3 l6">
+      <img src="../img/hotolandia-bandeira.png" class="w3-image" style="width:100%">
+    </div>
+  </div>
+</div>
 </body>
 </html>
