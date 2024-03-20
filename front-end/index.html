@@ -121,18 +121,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 
   <div class="w3-row-padding w3-padding-16">
     <div class="w3-third w3-margin-bottom">
-      <img src="/w3images/room_single.jpg" alt="Norway" style="width:100%">
+      <img src="../img/tia-fabi.jpg" alt="Norway" style="width:100%" height="300">
       <div class="w3-container w3-white">
         <h3>Tia Fabi</h3>
-        <h6 class="w3-opacity">From $99</h6>
-        <p>Single bed</p>
-        <p>15m<sup>2</sup></p>
+        <h6 class="w3-opacity">
+          <b>Celulares:</b>
+          <p>(11)11111-1111
+          <br>(22)22222-2222</br>
+          </p>
+          </h6>
+          <p>Queen-size bed</p>
+          <p>25m<sup>2</sup></p>
         <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+        <button class="w3-button w3-block w3-black w3-margin-bottom ">Selecionar Condutor</button>
       </div>
     </div>
     <div class="w3-third w3-margin-bottom">
-      <img src="../img/tio-jorge.jpg" alt="Norway" style="width:100%">
+      <img src="../img/tio-jorge.jpg" alt="Norway" style="width:100%" height="300">
       <div class="w3-container w3-white">
         <h3>Tio Jorge</h3>
         <h6 class="w3-opacity">
@@ -144,18 +149,35 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
         <p>Queen-size bed</p>
         <p>25m<sup>2</sup></p>
         <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+        <button class="w3-button w3-block w3-black w3-margin-bottom">Selecionar Condutor</button>
       </div>
     </div>
     <div class="w3-third w3-margin-bottom">
-      <img src="/w3images/room_deluxe.jpg" alt="Norway" style="width:100%">
+      <img src="../img/vanessa-example.jpg" alt="Norway" style="width:100%" height="300">
       <div class="w3-container w3-white">
-        <h3>Vanessa Escolar</h3>
-        <h6 class="w3-opacity">From $199</h6>
-        <p>King-size bed</p>
-        <p>40m<sup>2</sup></p>
-        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
+          <h3>Tia Vanessa</h3>
+        <div name="Horários" class="w3-half">
+          <ul class="w3-ul">
+            <li><i class="fa fa-coffee"></i> Manhã</li>
+            <li><i class="fa fa-sun-o"></i> Tarde</li>
+            <li><i class="fa fa-moon-o"></i> Noite</li>
+            <li><i class="fa fa-clock-o"></i> Integral</li>
+          </ul>
+        </div>
+        <div name="Celulares" class="w3-half">
+          <h6 class="w3-opacity"><b>Celulares:</b></h6>
+          <ul>
+            <li>(11)11111-1111</li>
+            <li>(22)22222-2222</li>
+          </ul>
+        </div>
+        <div name="Email" class="w3-half">
+          <h6 class="w3-opacity">
+          <b>Email:</b>
+          <p>alguem@algo.com.br</p>
+          </h6>
+        </div>
+        <button class="w3-button w3-block w3-black w3-margin-bottom">Selecionar Condutor</button>
       </div>
     </div>
   </div>
@@ -163,7 +185,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
   <!-- About -->
   <div class="w3-row-padding" id="Sobre">
     <div class="w3-col m3 l6">
-      <h3>Sobre</h3>
+      <h3>Sobre o VanApp</h3>
       <h6>Esse site nasceu como um projeto de TCC de um aluno de ADS - Análise e desenvolvimento de sistemas. Foi desenvolvido com o intuito de facilitar a vida de alunos e condutores, 
         uma vez que ambos perdem tempo com a pesquisa/gerenciamento de vagas disponíveis na logística do transporte escolar, agradeço antecipadamente todos os condutores que aderirem 
         a esse projeto, a ideia é quanto mais pessoas aderirem, menos valor ser gasto com propaganda e menos tempo perdido com buscas falhas por vagas lotadas.</h6>
@@ -175,6 +197,28 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
       <img src="../img/hotolandia-bandeira.png" class="w3-image" style="width:100%">
     </div>
   </div>
+
+  <!-- Contact -->
+  <div class="w3-container" id="contact">
+    <h2>Contato</h2>
+    <p>Se você tiver alguma dúvida, não hesite em perguntar.</p>
+    <i class="fa fa-map-marker w3-text-black" style="width:30px"></i> Hortolândia, SP<br>
+    <i class="fa fa-envelope w3-text-black" style="width:30px"> </i> Email: VanAppOuvidoria@gmail.com<br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Nome" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Mensagem" required name="Message"></p>
+      <p><button class="w3-button w3-black w3-padding-large" type="submit">Enviar mensagem</button></p>
+    </form>
+  </div>
 </div>
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+  <h5>Nos encontre em:</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <a href="https://br.linkedin.com/in/lucas-vilela-piza-a499741b3" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+  <p>Criado por LVP SOLUÇÕES DIGITAIS</p>
+</footer>
 </body>
 </html>
