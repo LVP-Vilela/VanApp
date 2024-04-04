@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/condutorEdit.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -12,7 +13,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
 <body class="w3-light-grey">
-
+<script>
+    function openEscolasManha() {
+        document.getElementById("escolasManha").style.visibility = "visible";
+    }
+</script>
 <!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -40,16 +45,28 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <ul class="w3-ul w3-padding-16">
             <li>
               <i class="fa fa-coffee w3-margin-right w3-large"></i> Manhã
-              <span class="w3-tag w3-right w3-green">Há vagas</span>
+              <label class="switch w3-right">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
             </li>
             <li><i class="fa fa-sun-o w3-margin-right w3-large"></i> Tarde
-              <span class="w3-tag w3-right w3-green">Há vagas</span>
+                <label class="switch w3-right">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
             </li>
             <li><i class="fa fa-moon-o w3-margin-right w3-large"></i> Noite
-              <span class="w3-tag w3-right w3-red">Não há vagas</span>
+                <label class="switch w3-right">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
             </li>
             <li><i class="fa fa-clock-o w3-margin-right w3-large"></i> Integral
-              <span class="w3-tag w3-right w3-green">Há vagas</span>
+              <label class="switch w3-right">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
             </li>
           </ul>
         </div>
@@ -66,12 +83,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
             <div class="w3-half">
                 <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas</h3>
-                    <ul class="w3-ul w3-padding-16 w3-margin">
-                        <li>Zanuch</li>
-                        <li>Janilde Flores</li>
-                        <li>Manoel Ignácio</li>
-                        <li>Leomar</li>
-                    </ul>
+                <ul class="w3-ul w3-padding-16 w3-margin">
+                    <li>Zanuch</li>
+                    <li>Janilde Flores</li>
+                    <li>Manoel Ignácio</li>
+                    <li>Leomar</li>
+                </ul>
             </div>
             <div class="w3-half">
                 <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Bairros</h3>
@@ -82,7 +99,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                     <li>Parque Nova Hortolândia</li>
                 </ul>
             </div>
-        </div>
+        </div>    
+        <button onClick="openEscolasManha()" class="w3-left w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Escolas</button>
+        <button class="w3-right w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Bairros</button>    
       </div>
 
       <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -90,13 +109,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
             <div class="w3-half">
                 <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas</h3>
-                    <ul class="w3-ul w3-padding-16 w3-margin">
-                        <li>SENAI - Sumaré</li>
-                        <li>Janilde Flores</li>
-                        <li>Manoel Ignácio</li>
-                        <li>Leomar</li>
-                        <li><b>Aberto a outros locais</b></li>
-                    </ul>
+                <ul class="w3-ul w3-padding-16 w3-margin">
+                    <li>SENAI - Sumaré</li>
+                    <li>Janilde Flores</li>
+                    <li>Manoel Ignácio</li>
+                    <li>Leomar</li>
+                    <li><b>Aberto a outros locais</b></li>
+                </ul>
             </div>
             <div class="w3-half">
                 <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Bairros</h3>
@@ -108,6 +127,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                 </ul>
             </div>
         </div>
+        <a href="condutorEdit.html" class="w3-left w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Escolas</a>
+        <a href="condutorEdit.html" class="w3-right w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Bairros</a>
       </div>
 
       <div class="w3-container w3-card w3-white w3-margin-bottom">
@@ -115,23 +136,25 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
             <div class="w3-half">
                 <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas</h3>
-                    <ul class="w3-ul w3-padding-16 w3-margin">
-                        <li>IFSP - Campus Hortolândia</li>
-                        <li>ETEC - Hortolândia</li>
-                        <li>Objetivo</li>
-                        <li class="w3-black">SESI-437</li>
-                    </ul>
+                <ul class="w3-ul w3-padding-16 w3-margin">
+                    <li>IFSP - Campus Hortolândia</li>
+                    <li>ETEC - Hortolândia</li>
+                    <li>Objetivo</li>
+                    <li>SESI-437</li>
+                </ul>
             </div>
             <div class="w3-half">
                 <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Bairros</h3>
                 <ul class="w3-ul w3-padding-16 w3-margin">
-                    <li class="w3-black">Vila São Pedro</li>
+                    <li>Vila São Pedro</li>
                     <li>Vila Real</li>
                     <li>Parque Terras de Santa Maria</li>
                     <li>Parque Nova Hortolândia</li>
                 </ul>
             </div>
         </div>
+        <a href="condutorEdit.html" class="w3-left w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Escolas</a>
+        <a href="condutorEdit.html" class="w3-right w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Bairros</a>
       </div>
     <!-- End Right Column -->
     </div>
@@ -140,6 +163,57 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   </div>
   
   <!-- End Page Container -->
+</div>
+
+<div id="escolasManha" class="w3-border w3-border-black w3-display-middle w3-col l6 m8" style="visibility: hidden">
+    <div class="w3-container w3-black">
+      <h2 class="w3-text-yellow"><i class="fa fa-coffee w3-margin-right w3-text-yellow"></i>Período da manhã:</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px;">
+            <div class="w3-half w3-margin-bottom">
+              <label><i class="fa fa-clock-o"></i> Seu Período:</label>
+              <select class="w3-select w3-border" name="option">
+                <option value="" disabled selected>Escolha a opção</option>
+                <option value="1">Período da Manhã</option>
+                <option value="2">Período da Tarde</option>
+                <option value="3">Período da Noite</option>
+                <option value="3">Período Integral</option>
+              </select>
+            </div>
+            <div class="w3-half">
+              <label><i class="fa fa-home"></i> Seu Bairro:</label>
+              <select class="w3-select w3-border" name="option">
+                <option value="" disabled selected>Escolha a opção</option>
+                <option value="1">São Pedro</option>
+                <option value="2">Nova Hortolândia</option>
+                <option value="3">Parque Residencial Maria de Lourdes</option>
+                <option value="3">Nova europa</option>
+              </select>
+            </div>
+          </div>
+          <div class="w3-row-padding" style="margin:8px -16px;">
+            <div class="w3-margin-bottom">
+              <label><i class="fa fa-graduation-cap"></i> Sua Escola:</label>
+              <select class="w3-select w3-border" name="option">
+                <option value="" disabled selected>Escolha a opção</option>
+                <option value="1">Instituto Federal de São Paulo - Campus Hortolândia</option>
+                <option value="2">Sesi - 437</option>
+                <option value="3">Manoel Ignácio</option>
+                <option value="3">Zanuch</option>
+              </select>
+            </div>
+          </div>
+        </form>
+        <button class="w3-button w3-black" onclick="pesquisar();"><i class="fa fa-search w3-margin-right"></i> Pesquisar</button>
+      </div>
+</div>
+
+<div id="bairrosManha" class="w3-display-middle w3-padding w3-col l6 m8" style="visibility: hidden">
+    <div class="w3-container w3-yellow">
+      <h2><i class="fa fa-coffee w3-margin-right"></i>Período da manhã:</h2>
+    </div>
 </div>
 
 <footer class="w3-padding-32 w3-black w3-center w3-margin-top">

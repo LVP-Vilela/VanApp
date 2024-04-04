@@ -97,7 +97,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
             <input class="w3-input w3-border">
           </div>
         </div>
-        <button class="w3-right w3-button w3-black" type="submit"><i class="fa fa-arrow-right w3-margin-right"></i> Entrar</button>
+        <a href="condutorEdit.html" class="w3-right w3-button w3-black" type="submit"><i class="fa fa-arrow-right w3-margin-right"></i> Entrar</a>
       </form> 
     </div>
 
@@ -133,9 +133,31 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
             <input class="w3-input w3-border">
           </div>
         </div>
-        <button class="w3-right w3-button w3-black" type="submit"><i class="fa fa-arrow-right w3-margin-right"></i> Próximo</button>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+          <div class="w3-half">
+            <label>Senha:</label>
+            <input class="w3-input w3-border">
+          </div>
+          <div class="w3-half">
+            <label>Confirmar senha:</label>
+            <input class="w3-input w3-border">
+          </div>
+        </div>
       </form>
+      <button class="w3-right w3-button w3-black" onclick="cadastrar1()"><i class="fa fa-arrow-right w3-margin-right"></i> Próximo</button>
     </div> 
+
+    <div id="Cadastro2" class="w3-container w3-white w3-padding-16" style="display:none; visibility: hidden">
+      <h2 class="w3-text-red"><b>ATENÇÃO:</b></h2>
+      <h4 class="w3-text-red w3-margin-bottom"><b>Antes de prosseguirmos com seu cadastro nós precisamos validar se você realmente está apto como condutor no sistema da mobilidade urbana, este passo serve para evitarmos que alguém 
+        mal intencionado se passe por um condutor tentando aplicar golpes, ou outro tipo de ação maliciosa, esse procedimento leva até 1 dia útil, após esse prazo é só logar com esse cadastro e definir 
+        sua linhas e horários que serão oferecidos através do site.</b>
+      </h4>
+      <button class="w3-right w3-button w3-black"><i class="fa fa-arrow-right w3-margin-right"></i> Enviar</button>
+      <button class="w3-left w3-button w3-black" onclick="cancelCadastro()"><i class="fa fa-times w3-margin-right"></i> Cancelar</button>
+       
+    </div>
+
   </div>
 </header>
 <script>
@@ -151,6 +173,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     }
     document.getElementById(option).style.display = "block";
     evt.currentTarget.firstElementChild.className += " w3-border-yellow";
+
+    document.getElementById("Cadastro2").style.display = "none";
+    document.getElementById("Cadastro2").style.visibility = "hidden";
   }
 
   function openCondutor() {
@@ -168,6 +193,20 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     document.getElementById("Condutores").style.visibility = "visible";
     window.location.href = "#Pesquisa";
   }
+
+  function cadastrar1() {
+    document.getElementById("Cadastro").style.display = "none";
+    document.getElementById("Cadastro2").style.display = "block";
+    document.getElementById("Cadastro2").style.visibility = "visible";
+  }
+
+  function cancelCadastro() {
+    document.getElementById("Cadastro2").style.display = "none";
+    document.getElementById("Cadastro2").style.visibility = "hidden";
+    document.getElementById("Cadastro").style.display = "block";
+    document.getElementById("Cadastro").style.visibility = "visible";
+  }
+
 </script>
 <!-- Page content -->
 <div class="w3-content" style="max-width:1532px;">
