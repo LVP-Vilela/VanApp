@@ -40,8 +40,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large"></i>(22)22222-2222</p>
           <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large"></i>Alguem@algo.com.br</p>
           <hr>
+          <div class="w3-row">
+            <p class="w3-large w3-left"><b><i class="fa fa-clock-o fa-fw"></i>Horários</b></p>
+            <p class="w3-large w3-right">Há vagas:</p>
+          </div>
 
-          <p class="w3-large"><b><i class="fa fa-clock-o fa-fw w3-margin-right"></i>Horários</b></p>
           <ul class="w3-ul w3-padding-16">
             <li>
               <i class="fa fa-coffee w3-margin-right w3-large"></i> Manhã
@@ -170,44 +173,28 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <h2 class="w3-text-yellow"><i class="fa fa-coffee w3-margin-right w3-text-yellow"></i>Período da manhã:</h2>
     </div>
     <div class="w3-container w3-white w3-padding-16">
-        <form action="/action_page.php" target="_blank">
-          <div class="w3-row-padding" style="margin:0 -16px;">
-            <div class="w3-half w3-margin-bottom">
-              <label><i class="fa fa-clock-o"></i> Seu Período:</label>
-              <select class="w3-select w3-border" name="option">
-                <option value="" disabled selected>Escolha a opção</option>
-                <option value="1">Período da Manhã</option>
-                <option value="2">Período da Tarde</option>
-                <option value="3">Período da Noite</option>
-                <option value="3">Período Integral</option>
-              </select>
-            </div>
-            <div class="w3-half">
-              <label><i class="fa fa-home"></i> Seu Bairro:</label>
-              <select class="w3-select w3-border" name="option">
-                <option value="" disabled selected>Escolha a opção</option>
-                <option value="1">São Pedro</option>
-                <option value="2">Nova Hortolândia</option>
-                <option value="3">Parque Residencial Maria de Lourdes</option>
-                <option value="3">Nova europa</option>
-              </select>
-            </div>
-          </div>
-          <div class="w3-row-padding" style="margin:8px -16px;">
-            <div class="w3-margin-bottom">
-              <label><i class="fa fa-graduation-cap"></i> Sua Escola:</label>
-              <select class="w3-select w3-border" name="option">
-                <option value="" disabled selected>Escolha a opção</option>
-                <option value="1">Instituto Federal de São Paulo - Campus Hortolândia</option>
-                <option value="2">Sesi - 437</option>
-                <option value="3">Manoel Ignácio</option>
-                <option value="3">Zanuch</option>
-              </select>
-            </div>
-          </div>
-        </form>
-        <button class="w3-button w3-black" onclick="pesquisar();"><i class="fa fa-search w3-margin-right"></i> Pesquisar</button>
+      <div class="w3-half">
+        <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas Disponíveis:</h3>
+        <ul class="w3-ul w3-padding-16 w3-margin">
+            <li>Zanuch</li>
+            <li>Janilde Flores</li>
+            <li>Manoel Ignácio</li>
+            <li>Leomar</li>
+        </ul>
       </div>
+      <div class="w3-half">
+        <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Escolas na minha linha:</h3>
+        <ul class="w3-ul w3-padding-16 w3-margin">
+          <li>Zanuch
+            <span onclick="this.parentElement.style.display='none'"
+            class="w3-button w3-display-right">&times;</span>
+          </li>
+          <li>Janilde Flores</li>
+          <li>Manoel Ignácio</li>
+          <li>Leomar</li>
+        </ul>
+      </div>
+    </div>
 </div>
 
 <div id="bairrosManha" class="w3-display-middle w3-padding w3-col l6 m8" style="visibility: hidden">
