@@ -175,25 +175,52 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <div class="w3-container w3-white w3-padding-16">
       <div class="w3-half">
         <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas Disponíveis:</h3>
-        <ul class="w3-ul w3-padding-16 w3-margin">
-            <li>Zanuch</li>
-            <li>Janilde Flores</li>
-            <li>Manoel Ignácio</li>
-            <li>Leomar</li>
+        <form class="w3-margin">
+            <div class="w3-row">
+              <input class="w3-input w3-border w3-threequarter">
+              <button class="w3-button w3-quarter w3-black"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+        <ul class="w3-ul w3-margin w3-border">
+            <li class="w3-display-container"> IFSP - campus Hortolândia
+              <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-display-right"><i class="fa fa-plus w3-text-green"></i></span>
+            </li>
+            <li class="w3-display-container">Sesi-437
+              <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-display-right"><i class="fa fa-plus w3-text-green"></i></span>
+            </li>
         </ul>
       </div>
       <div class="w3-half">
-        <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Escolas na minha linha:</h3>
-        <ul class="w3-ul w3-padding-16 w3-margin">
-          <li>Zanuch
+        <h3 class="w3-container w3-padding-16 "><i class="fa fa-bus fa-fw w3-margin-right w3-xlarge"></i>Escolas na minha linha:</h3>
+        <form class="w3-margin">
+          <div class="w3-row">
+            <input class="w3-input w3-border w3-threequarter">
+            <button class="w3-button w3-quarter w3-black"><i class="fa fa-search"></i></button>
+          </div>
+      </form>
+        <ul class="w3-ul w3-margin w3-border">
+          <li class="w3-display-container">Zanuch
             <span onclick="this.parentElement.style.display='none'"
-            class="w3-button w3-display-right">&times;</span>
+            class="w3-button w3-display-right"><i class="fa fa-close w3-text-red"></i></span>
           </li>
-          <li>Janilde Flores</li>
-          <li>Manoel Ignácio</li>
-          <li>Leomar</li>
+          <li class="w3-display-container">Janilde Flores
+            <span onclick="this.parentElement.style.display='none'"
+            class="w3-button w3-display-right"><i class="fa fa-close w3-text-red"></i></span>
+          </li>
+          <li class="w3-display-container">Manoel Ignácio
+            <span onclick="this.parentElement.style.display='none'"
+            class="w3-button w3-display-right"><i class="fa fa-close w3-text-red"></i></span>
+          </li>
+          <li class="w3-display-container">Leomar
+            <span onclick="this.parentElement.style.display='none'"
+            class="w3-button w3-display-right"><i class="fa fa-close w3-text-red"></i></span>
+          </li>
         </ul>
       </div>
+      <button onClick="openEscolasManha()" class="w3-left w3-button w3-black w3-margin"><i class="fa fa-close w3-margin-right"></i> Cancelar</button>
+      <button class="w3-right w3-button w3-black w3-margin"><i class="fa fa-arrow-right w3-margin-right"></i> Salvar</button>   
     </div>
 </div>
 
