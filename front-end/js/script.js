@@ -1,7 +1,3 @@
-
-
-
-
 function preencherSelectComJson(jsonData) {
     // Obtém o elemento select pelo ID
     const selectElement = document.getElementById('escolaSelect');
@@ -23,8 +19,13 @@ function preencherSelectComJson(jsonData) {
     });
 }
 
+async function getImage(){
+  const response = await fetch('http://localhost:8080/escolas',{method: "GET"});
+  const json = await response.json();
+  preencherSelectComJson(json);
+}
 
 // Simula a obtenção de dados JSON e preenche o select
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:8080/escolas')
+  getImage();
 });
