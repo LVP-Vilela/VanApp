@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Set-2024 às 02:21
+-- Tempo de geração: 01-Out-2024 às 03:03
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -178,6 +178,26 @@ CREATE TABLE `celular` (
   `Celular` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `celular`
+--
+
+INSERT INTO `celular` (`CNH`, `Celular`) VALUES
+('0000000000', '(01)10000-1000'),
+('0000000000', '(02)20000-2000'),
+('1111111111', '(03)30000-3000'),
+('1111111111', '(04)40000-4000'),
+('2222222222', '(05)50000-5000'),
+('2222222222', '(06)60000-6000'),
+('3333333333', '(07)70000-7000'),
+('3333333333', '(08)80000-8000'),
+('4444444444', '(09)90000-9000'),
+('5555555555', '(10)00000-0000'),
+('6666666666', '(11)11000-1100'),
+('7777777777', '(12)12000-1200'),
+('7777777777', '(13)13000-1300'),
+('8888888888', '(14)14000-1400');
+
 -- --------------------------------------------------------
 
 --
@@ -186,8 +206,24 @@ CREATE TABLE `celular` (
 
 CREATE TABLE `condutores` (
   `CNH` varchar(10) NOT NULL,
-  `Name` varchar(60) NOT NULL
+  `Name` varchar(60) NOT NULL,
+  `imgPath` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `condutores`
+--
+
+INSERT INTO `condutores` (`CNH`, `Name`, `imgPath`) VALUES
+('0000000000', 'Fabiana Escolar', 'tia-fabi.jpg'),
+('1111111111', 'Jorge Escolar', 'tio-jorge.jpg'),
+('2222222222', 'Vanessa Escolar', 'tia-van.jpg'),
+('3333333333', 'Fabio Escolar', 'volare-v6.jpg'),
+('4444444444', 'Dilma Escolar', 'volare-w8.jpg'),
+('5555555555', 'Jefferson Escolar', 'ducato.jpg'),
+('6666666666', 'Zilda Escolar', 'sprinter.jpg'),
+('7777777777', 'Fernanda Escolar', 'Master.jpg'),
+('8888888888', 'Amaucir Escolar', 'Besta.jpg');
 
 -- --------------------------------------------------------
 
@@ -199,6 +235,25 @@ CREATE TABLE `email` (
   `CNH` varchar(10) NOT NULL,
   `Email` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `email`
+--
+
+INSERT INTO `email` (`CNH`, `Email`) VALUES
+('0000000000', 'teste1@teste.gmail.com'),
+('1111111111', 'teste2@teste.gmail.com'),
+('1111111111', 'teste3@teste.gmail.com'),
+('2222222222', 'teste4@teste.gmail.com'),
+('2222222222', 'teste5@teste.gmail.com'),
+('3333333333', 'teste6@teste.gmail.com'),
+('3333333333', 'teste7@teste.gmail.com'),
+('4444444444', 'teste8@teste.gmail.com'),
+('5555555555', 'teste9@teste.gmail.com'),
+('6666666666', 'teste10@teste.gmail.com'),
+('7777777777', 'teste11@teste.gmail.com'),
+('7777777777', 'teste12@teste.gmail.com'),
+('8888888888', 'teste13@teste.gmail.com');
 
 -- --------------------------------------------------------
 
@@ -362,10 +417,51 @@ CREATE TABLE `escolas_linhas` (
 CREATE TABLE `linhas` (
   `ID` int(11) NOT NULL,
   `PossuiVagas` int(11) NOT NULL,
-  `descricao` varchar(40) NOT NULL,
   `Periodo` varchar(40) NOT NULL,
   `CNH_Condutor` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `linhas`
+--
+
+INSERT INTO `linhas` (`ID`, `PossuiVagas`, `Periodo`, `CNH_Condutor`) VALUES
+(1, 0, 'Período da Manhã', '0000000000'),
+(2, 0, 'Período da Tarde', '0000000000'),
+(3, 0, 'Período da Noite', '0000000000'),
+(4, 0, 'Período Integral', '0000000000'),
+(5, 0, 'Período da Manhã', '1111111111'),
+(6, 0, 'Período da Tarde', '1111111111'),
+(7, 0, 'Período da Noite', '1111111111'),
+(8, 0, 'Período Integral', '1111111111'),
+(9, 0, 'Período da Manhã', '2222222222'),
+(10, 0, 'Período da Tarde', '2222222222'),
+(11, 0, 'Período da Noite', '2222222222'),
+(12, 0, 'Período Integral', '2222222222'),
+(13, 0, 'Período da Manhã', '3333333333'),
+(14, 0, 'Período da Tarde', '3333333333'),
+(15, 0, 'Período da Noite', '3333333333'),
+(16, 0, 'Período Integral', '3333333333'),
+(17, 0, 'Período da Manhã', '4444444444'),
+(18, 0, 'Período da Tarde', '4444444444'),
+(19, 0, 'Período da Noite', '4444444444'),
+(20, 0, 'Período Integral', '4444444444'),
+(21, 0, 'Período da Manhã', '5555555555'),
+(22, 0, 'Período da Tarde', '5555555555'),
+(23, 0, 'Período da Noite', '5555555555'),
+(24, 0, 'Período Integral', '5555555555'),
+(25, 0, 'Período da Manhã', '6666666666'),
+(26, 0, 'Período da Tarde', '6666666666'),
+(27, 0, 'Período da Noite', '6666666666'),
+(28, 0, 'Período Integral', '6666666666'),
+(29, 0, 'Período da Manhã', '7777777777'),
+(30, 0, 'Período da Tarde', '7777777777'),
+(31, 0, 'Período da Noite', '7777777777'),
+(32, 0, 'Período Integral', '7777777777'),
+(33, 0, 'Período da Manhã', '8888888888'),
+(34, 0, 'Período da Tarde', '8888888888'),
+(35, 0, 'Período da Noite', '8888888888'),
+(36, 0, 'Período Integral', '8888888888');
 
 --
 -- Índices para tabelas despejadas
@@ -442,7 +538,7 @@ ALTER TABLE `escolas`
 -- AUTO_INCREMENT de tabela `linhas`
 --
 ALTER TABLE `linhas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restrições para despejos de tabelas
