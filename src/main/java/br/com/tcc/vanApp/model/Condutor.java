@@ -16,7 +16,7 @@ public class Condutor {
 	@Column(name = "Name", length = 200, nullable = false)
 	private String name;
 	
-	@Column(name = "imgPath", length = 200)
+	@Column(name = "imgpath", length = 200)
 	private String imgPath;
 	
 	public String getCnh() {
