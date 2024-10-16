@@ -91,11 +91,6 @@ function preencherSelectCondutores(jsonData) {
       </div>`
 
     selectElement.append(cond);
-
-    //const option = document.createElement('option');
-    //option.text = bairro.desc;
-    //selectElement.appendChild(cond);
-
   });
   
 }
@@ -167,4 +162,34 @@ function cancelCadastro() {
   document.getElementById("Cadastro2").style.visibility = "hidden";
   document.getElementById("Cadastro").style.display = "block";
   document.getElementById("Cadastro").style.visibility = "visible";
+}
+
+async function openEscolasManha() {
+  const response = await fetch('http://localhost:8080/escolas',{method: "GET"});
+  const json = await response.json();
+  preencherEscolasEdit(json);
+
+  document.getElementById("escolasManha").style.visibility = "visible";
+}
+
+function preencherEscolasEdit(jsonData) {
+  // Obtém o elemento select pelo ID
+  const selectElement = document.getElementById('listaEscolasEdit');
+  
+  // Limpa qualquer opção existente
+  selectElement.innerHTML = '';
+
+  // Adiciona as opções do JSON
+  jsonData.forEach(escola => {
+    let esc = document.createElement("li");
+
+    esc.innerHTML = 
+    `<li class="w3-display-container"> ${escola.desc}
+    <span onclick="this.parentElement.style.display='none'"
+    class="w3-button w3-display-right"><i class="fa fa-plus w3-text-green"></i></span>
+    </li>`
+
+    selectElement.append(esc);
+  });
+  
 }

@@ -4,20 +4,16 @@
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="css/condutorEdit.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/w3css.css">
+<link rel="stylesheet" href="css/googleFonts.css">
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
+<script src="js/script.js" defer></script>
 </head>
 <body class="w3-light-grey">
-<script>
-    function openEscolasManha() {
-        document.getElementById("escolasManha").style.visibility = "visible";
-    }
-</script>
 <!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -103,7 +99,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                 </ul>
             </div>
         </div>    
-        <button onClick="openEscolasManha()" class="w3-left w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Escolas</button>
+        <button onclick="openEscolasManha();" class="w3-left w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Escolas</button>
         <button class="w3-right w3-button w3-black w3-margin"><i class="fa fa-edit w3-margin-right"></i> Editar Bairros</button>    
       </div>
 
@@ -173,7 +169,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <h2 class="w3-text-yellow"><i class="fa fa-coffee w3-margin-right w3-text-yellow"></i>Período da manhã:</h2>
     </div>
     <div class="w3-container w3-white w3-padding-16">
-      <div class="w3-half">
+      <div class="w3-half" style.height="800px" style.overflow="overflow">
         <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas Disponíveis:</h3>
         <form class="w3-margin">
             <div class="w3-row">
@@ -181,16 +177,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <button class="w3-button w3-quarter w3-black"><i class="fa fa-search"></i></button>
             </div>
         </form>
-        <ul class="w3-ul w3-margin w3-border">
-            <li class="w3-display-container"> IFSP - campus Hortolândia
-              <span onclick="this.parentElement.style.display='none'"
-              class="w3-button w3-display-right"><i class="fa fa-plus w3-text-green"></i></span>
-            </li>
-            <li class="w3-display-container">Sesi-437
-              <span onclick="this.parentElement.style.display='none'"
-              class="w3-button w3-display-right"><i class="fa fa-plus w3-text-green"></i></span>
-            </li>
-        </ul>
+        <ul class="w3-ul w3-margin w3-border" id="listaEscolasEdit"></ul>
       </div>
       <div class="w3-half">
         <h3 class="w3-container w3-padding-16 "><i class="fa fa-bus fa-fw w3-margin-right w3-xlarge"></i>Escolas na minha linha:</h3>

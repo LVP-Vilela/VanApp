@@ -60,3 +60,8 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+  #listaEscolasEdit{
+    height: 200px;
+    overflow: scroll;
+  }
