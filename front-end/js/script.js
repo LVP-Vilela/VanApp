@@ -49,7 +49,17 @@ function preencherSelectCondutores(jsonData) {
 
   // Adiciona as opções do JSON
   jsonData.forEach(condutor => {
+
+    const response = fetch('http://localhost:8080/linhas/'+condutor.cnh,{method: "GET"});
+    const subJson = response.json();
+
     let cond = document.createElement("div");
+
+    subJson.forEach(linha => {
+
+
+
+    });
 
     cond.innerHTML = 
       `<div class="w3-third w3-margin-bottom">

@@ -48,4 +48,9 @@ public class LinhaController {
 		dao.deleteById(id);
 		return linha;
 	}
+	
+	@GetMapping("/{cnh}")
+	public List<Linha> listaLinhasPorCondutor(@PathVariable String cnh){
+		return (List<Linha>) dao.findByCnhCondutor(cnh);
+	}
 }

@@ -61,7 +61,7 @@
     border-radius: 50%;
   }
 
-  #listaEscolasEdit{
-    height: 200px;
-    overflow: scroll;
+  #listaEscolasEdit,#listaSuasEscolasEdit{
+    height: 330px;
+    overflow: auto;
   }
