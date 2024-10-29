@@ -13,6 +13,9 @@ public class CelularID implements Serializable{
 		this.cnh = cnh;
 		this.celular = celular;
 	}
+	public CelularID() {
+		super();
+	}
 	public String getCnh() {
 		return cnh;
 	}

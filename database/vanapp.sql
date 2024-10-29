@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Out-2024 às 03:03
+-- Tempo de geração: 29-Out-2024 às 01:49
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -416,7 +416,7 @@ CREATE TABLE `escolas_linhas` (
 
 CREATE TABLE `linhas` (
   `ID` int(11) NOT NULL,
-  `PossuiVagas` int(11) NOT NULL,
+  `Possui_Vagas` int(11) NOT NULL,
   `Periodo` varchar(40) NOT NULL,
   `CNH_Condutor` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -425,9 +425,9 @@ CREATE TABLE `linhas` (
 -- Extraindo dados da tabela `linhas`
 --
 
-INSERT INTO `linhas` (`ID`, `PossuiVagas`, `Periodo`, `CNH_Condutor`) VALUES
-(1, 0, 'Período da Manhã', '0000000000'),
-(2, 0, 'Período da Tarde', '0000000000'),
+INSERT INTO `linhas` (`ID`, `Possui_Vagas`, `Periodo`, `CNH_Condutor`) VALUES
+(1, 1, 'Período da Manhã', '0000000000'),
+(2, 1, 'Período da Tarde', '0000000000'),
 (3, 0, 'Período da Noite', '0000000000'),
 (4, 0, 'Período Integral', '0000000000'),
 (5, 0, 'Período da Manhã', '1111111111'),
@@ -452,8 +452,6 @@ INSERT INTO `linhas` (`ID`, `PossuiVagas`, `Periodo`, `CNH_Condutor`) VALUES
 (24, 0, 'Período Integral', '5555555555'),
 (25, 0, 'Período da Manhã', '6666666666'),
 (26, 0, 'Período da Tarde', '6666666666'),
-(27, 0, 'Período da Noite', '6666666666'),
-(28, 0, 'Período Integral', '6666666666'),
 (29, 0, 'Período da Manhã', '7777777777'),
 (30, 0, 'Período da Tarde', '7777777777'),
 (31, 0, 'Período da Noite', '7777777777'),

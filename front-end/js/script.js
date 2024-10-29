@@ -40,7 +40,7 @@ function preencherSelectBairros(jsonData) {
   });
 }
 
-function preencherSelectCondutores(jsonData) {
+async function preencherSelectCondutores(jsonData) {
   // Obtém o elemento select pelo ID
   const selectElement = document.getElementById('CondutoresChild');
   
@@ -48,58 +48,74 @@ function preencherSelectCondutores(jsonData) {
   selectElement.innerHTML = '';
 
   // Adiciona as opções do JSON
-  jsonData.forEach(condutor => {
+  jsonData.forEach(async condutor => {
 
-    const response = fetch('http://localhost:8080/linhas/'+condutor.cnh,{method: "GET"});
-    const subJson = response.json();
+    const response = await fetch('http://localhost:8080/linhas/'+condutor.cnh,{method: "GET"});
+    const subJson = await response.json();
 
     let cond = document.createElement("div");
 
-    subJson.forEach(linha => {
-
-
-
-    });
-
-    cond.innerHTML = 
+    let HTML;
+    
+    HTML = 
       `<div class="w3-third w3-margin-bottom">
         <img src="../img/users-image/${condutor.imgPath}" alt="Norway" style="width:100%" height="300">
         <div class="w3-container w3-white">
           <h3>${condutor.name}</h3>
           <div name="Horários" class="w3-row w3-border-bottom w3-border-black" style="min-height:160px">
-            <ul class="w3-ul">
-              <li>
-                <i class="fa fa-coffee"></i> Manhã
-                <span class="w3-tag w3-right w3-red">Não há vagas</span>
-              </li>
-              <li><i class="fa fa-sun-o"></i> Tarde
-                <span class="w3-tag w3-right w3-green">Há vagas</span>
-              </li>
-              <li>
-                <i class="fa fa-moon-o"></i> Noite
-                <span class="w3-tag w3-right w3-red">Não há vagas</span>
-              </li>
-            </ul>
+            <ul class="w3-ul">`
+            
+            subJson.forEach(linha => {
+              HTML = HTML + `<li>`    
+              if(linha.periodo == "Período da Manhã"){
+                HTML = HTML + `<i class="fa fa-coffee"></i> ${linha.periodo}`
+              }else if(linha.periodo == "Período da Tarde"){
+                HTML = HTML + `<i class="fa fa-sun-o"></i> ${linha.periodo}`
+              }else if(linha.periodo == "Período da Noite"){
+                HTML = HTML + `<i class="fa fa-moon-o"></i> ${linha.periodo}`
+              }else if(linha.periodo == "Período Integral"){
+                HTML = HTML + `<i class="fa fa-clock-o"></i> ${linha.periodo}`
+              }
+              if(linha.possuiVagas){
+                HTML = HTML + `<span class="w3-tag w3-right w3-green">Há vagas</span>`
+              }else{
+                HTML = HTML + `<span class="w3-tag w3-right w3-red">Não há vagas</span>`
+              }
+              HTML = HTML + `</li>` 
+            });
+            HTML = HTML +
+            `</ul>
           </div>
           <div class="w3-row-padding">
-            <div name="Celulares" class="w3-col w3-right" style="width:200px">
+            <div name="Celulares" class="w3-col w3-right" style="width:180px;min-height:130px">
               <h6 class="w3-opacity w3-right"><b>Celulares:</b>
-                <ul>
-                  <li>(11)11111-1111</li>
-                  <li>(22)22222-2222</li>
-                </ul>
+                <ul>`;
+                const responseCel = await fetch('http://localhost:8080/celulares/'+condutor.cnh,{method: "GET"});
+                const subJsonCel = await responseCel.json();
+                subJsonCel.forEach(cel => {
+                  HTML = HTML + `<li>${cel.celular}</li>`
+                });                
+                HTML = HTML +
+                `</ul>
               </h6>
             </div>
-            <div name="Email" class="w3-rest" >
+            <div name="Email" class="w3-rest" style="min-height:130px">
               <h6 class="w3-opacity"><b>Email: </b>
-                <p>Alguem@algo.com.br</p>
+              <ul>`;
+                const responseEmail = await fetch('http://localhost:8080/emails/'+condutor.cnh,{method: "GET"});
+                const subJsonEmail = await responseEmail.json();
+                subJsonEmail.forEach(email => {
+                  HTML = HTML + `<li>${email.email}</li>`
+                });                
+                HTML = HTML +
+              `</ul>
               </h6>
             </div>
           </div>
-          <a href="condutor.html" class="w3-button w3-block w3-black w3-margin-bottom ">Selecionar Condutor</button>
+          <a href="condutor.html"><button class="w3-button w3-block w3-black w3-margin-bottom onclick="selecionaCondutor(${condutor.cnh});">Selecionar Condutor</button></a>
         </div>
       </div>`
-
+    cond.innerHTML = HTML;
     selectElement.append(cond);
   });
   
@@ -154,6 +170,9 @@ function openCliente() {
 async function pesquisar() {
   const response = await fetch('http://localhost:8080/condutores',{method: "GET"});
   const json = await response.json();
+
+
+
   preencherSelectCondutores(json);
 
   document.getElementById("Condutores").style.display = "block";
@@ -201,5 +220,9 @@ function preencherEscolasEdit(jsonData) {
 
     selectElement.append(esc);
   });
+  
+}
+
+function selecionaCondutor(cnh) {
   
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +38,11 @@ public class EmailController {
 	public Email editarEmail(@RequestBody Email email) {
 		Email emailNova = dao.save(email);
 		return emailNova;
+	}
+	
+	@GetMapping("/{cnh}")
+	public List<Email> listaEmailsPorCondutor(@PathVariable String cnh){
+		return (List<Email>) dao.findByCnh(cnh);
 	}
 
 }

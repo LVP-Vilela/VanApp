@@ -16,7 +16,7 @@ public class Linha {
 	@Column(name = "ID")
 	private int id;
 	
-	@Column(name = "PossuiVagas")
+	@Column(name = "Possui_Vagas")
 	private int possuiVagas;
 	
 	@Column(name = "Periodo")
