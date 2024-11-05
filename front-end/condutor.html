@@ -10,6 +10,35 @@
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
+<script>
+  // Recupera os dados armazenados no sessionStorage
+  const condutorData = JSON.parse(sessionStorage.getItem('condutorData'));
+
+  if (condutorData) {
+    // Obtém o elemento 'cabecalhoCondutor'
+    const selectElement = document.getElementById('cabecalhoCondutor');
+    
+    let cond = document.createElement("div");
+
+    // Preenche o HTML com os dados do condutor
+    cond.innerHTML = `
+      <div class="w3-display-container">
+        <img src="../img/users-image/${condutorData.imgPath}" style="width:100%">
+        <a href="index.html" class="w3-button w3-display-topleft w3-xlarge w3-yellow">
+          <i class="fa fa-reply fa-fw w3-text-black"></i>
+        </a>
+        <div class="w3-container w3-yellow w3-topbar w3-bottombar w3-border-black">
+          <h2><i class="w3-margin-right"></i>${condutorData.name}</h2>
+        </div>
+      </div>`;
+
+    // Adiciona o conteúdo ao elemento
+    selectElement.append(cond);
+  } else {
+    // Se não houver dados no sessionStorage (por exemplo, se alguém acessar diretamente a página)
+    console.error('Dados do condutor não encontrados no sessionStorage');
+  }
+</script>
 </head>
 <body class="w3-light-grey">
 
@@ -22,14 +51,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <!-- Left Column -->
     <div class="w3-third">
     
-      <div class="w3-white w3-text-grey w3-card-4">
-        <div class="w3-display-container">
-          <img src="../img/users-image/tio-jorge.jpg" style="width:100%">
-          <a href="index.html" class="w3-button w3-display-topleft w3-xlarge w3-yellow"><i class="fa fa-reply fa-fw w3-text-black"></i></a>
-          <div class="w3-container w3-yellow w3-topbar w3-bottombar w3-border-black">
-            <h2><i class="w3-margin-right"></i>Tio Jorge</h2>
-          </div>
-        </div>
+      <div class="w3-white w3-text-grey w3-card-4" id="cabecalhoCondutor">
+        
         <div class="w3-container">
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large"></i>(11)11111-1111</p>
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large"></i>(22)22222-2222</p>

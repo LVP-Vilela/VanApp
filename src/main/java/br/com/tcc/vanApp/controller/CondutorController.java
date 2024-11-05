@@ -48,5 +48,11 @@ public class CondutorController {
 		dao.deleteById(cnh);
 		return condutor;
 	}
+	
+	@GetMapping("/{cnh}")
+	public Condutor ProcuraCondutor(@PathVariable String cnh){
+		Optional<Condutor> condutor = (Optional<Condutor>)dao.findById(cnh);
+		return condutor.get();
+	}
 
 }
