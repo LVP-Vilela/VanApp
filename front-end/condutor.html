@@ -10,35 +10,7 @@
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
-<script>
-  // Recupera os dados armazenados no sessionStorage
-  const condutorData = JSON.parse(sessionStorage.getItem('condutorData'));
-
-  if (condutorData) {
-    // Obtém o elemento 'cabecalhoCondutor'
-    const selectElement = document.getElementById('cabecalhoCondutor');
-    
-    let cond = document.createElement("div");
-
-    // Preenche o HTML com os dados do condutor
-    cond.innerHTML = `
-      <div class="w3-display-container">
-        <img src="../img/users-image/${condutorData.imgPath}" style="width:100%">
-        <a href="index.html" class="w3-button w3-display-topleft w3-xlarge w3-yellow">
-          <i class="fa fa-reply fa-fw w3-text-black"></i>
-        </a>
-        <div class="w3-container w3-yellow w3-topbar w3-bottombar w3-border-black">
-          <h2><i class="w3-margin-right"></i>${condutorData.name}</h2>
-        </div>
-      </div>`;
-
-    // Adiciona o conteúdo ao elemento
-    selectElement.append(cond);
-  } else {
-    // Se não houver dados no sessionStorage (por exemplo, se alguém acessar diretamente a página)
-    console.error('Dados do condutor não encontrados no sessionStorage');
-  }
-</script>
+<script src="js/scriptCond.js" defer></script>
 </head>
 <body class="w3-light-grey">
 
@@ -53,29 +25,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
       <div class="w3-white w3-text-grey w3-card-4" id="cabecalhoCondutor">
         
-        <div class="w3-container">
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large"></i>(11)11111-1111</p>
-          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large"></i>(22)22222-2222</p>
-          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large"></i>Alguem@algo.com.br</p>
-          <hr>
-
-          <p class="w3-large"><b><i class="fa fa-clock-o fa-fw w3-margin-right"></i>Horários</b></p>
-          <ul class="w3-ul w3-padding-16">
-            <li>
-              <i class="fa fa-coffee w3-margin-right w3-large"></i> Manhã
-              <span class="w3-tag w3-right w3-green">Há vagas</span>
-            </li>
-            <li><i class="fa fa-sun-o w3-margin-right w3-large"></i> Tarde
-              <span class="w3-tag w3-right w3-green">Há vagas</span>
-            </li>
-            <li><i class="fa fa-moon-o w3-margin-right w3-large"></i> Noite
-              <span class="w3-tag w3-right w3-red">Não há vagas</span>
-            </li>
-            <li><i class="fa fa-clock-o w3-margin-right w3-large"></i> Integral
-              <span class="w3-tag w3-right w3-green">Há vagas</span>
-            </li>
-          </ul>
-        </div>
+        
       </div><br>
 
     <!-- End Left Column -->

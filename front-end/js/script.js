@@ -112,7 +112,7 @@ async function preencherSelectCondutores(jsonData) {
               </h6>
             </div>
           </div>
-          <button class="w3-button w3-block w3-black w3-margin-bottom" onclick="selecionaCondutor(${condutor.cnh})">Selecionar Condutor</button></a>
+          <button class="w3-button w3-block w3-black w3-margin-bottom" onclick="selecionaCondutor('${condutor.cnh}')">Selecionar Condutor</button></a>
         </div>
       </div>`
     cond.innerHTML = HTML;
@@ -224,16 +224,8 @@ function preencherEscolasEdit(jsonData) {
 }
 
 async function selecionaCondutor(cnh) {
-  const response = await fetch('http://localhost:8080/condutores/'+cnh,{method: "GET"});
-  const json = await response.json();
-
-  preencheCondutor(json);
-}
-
-function preencheCondutor(jsonData) {
-
   // Armazena os dados no sessionStorage
-  sessionStorage.setItem('condutorData', jsonData);
+  sessionStorage.setItem('condutorCnh', cnh);
 
   // Redireciona para a página condutor.html
   window.location.assign('condutor.html');
