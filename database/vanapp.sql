@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2024 às 01:49
+-- Tempo de geração: 12-Nov-2024 às 02:04
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -166,6 +166,28 @@ CREATE TABLE `bairros_linhas` (
   `ID_Bairros` int(11) NOT NULL,
   `ID_Linhas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `bairros_linhas`
+--
+
+INSERT INTO `bairros_linhas` (`ID_Bairros`, `ID_Linhas`) VALUES
+(24, 1),
+(24, 2),
+(24, 3),
+(24, 4),
+(43, 1),
+(43, 2),
+(53, 1),
+(53, 2),
+(53, 3),
+(53, 4),
+(54, 1),
+(54, 2),
+(54, 3),
+(54, 4),
+(113, 3),
+(113, 4);
 
 -- --------------------------------------------------------
 
@@ -404,9 +426,28 @@ INSERT INTO `escolas` (`ID`, `Descricao`, `Bairro`, `Rua`, `Complemento`, `Numer
 --
 
 CREATE TABLE `escolas_linhas` (
-  `ID_Escolas` int(11) NOT NULL,
-  `ID_Linhas` int(11) NOT NULL
+  `IdEscolas` int(11) NOT NULL,
+  `IdLinhas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `escolas_linhas`
+--
+
+INSERT INTO `escolas_linhas` (`IdEscolas`, `IdLinhas`) VALUES
+(5, 1),
+(5, 2),
+(18, 3),
+(41, 4),
+(53, 3),
+(53, 4),
+(57, 1),
+(57, 2),
+(84, 1),
+(84, 2),
+(85, 1),
+(85, 2),
+(111, 4);
 
 -- --------------------------------------------------------
 
@@ -506,8 +547,8 @@ ALTER TABLE `escolas`
 -- Índices para tabela `escolas_linhas`
 --
 ALTER TABLE `escolas_linhas`
-  ADD PRIMARY KEY (`ID_Escolas`,`ID_Linhas`),
-  ADD KEY `ID_Linhas` (`ID_Linhas`);
+  ADD PRIMARY KEY (`IdEscolas`,`IdLinhas`),
+  ADD KEY `IdLinhas` (`IdLinhas`) USING BTREE;
 
 --
 -- Índices para tabela `linhas`
@@ -565,8 +606,8 @@ ALTER TABLE `email`
 -- Limitadores para a tabela `escolas_linhas`
 --
 ALTER TABLE `escolas_linhas`
-  ADD CONSTRAINT `escolas_linhas_ibfk_1` FOREIGN KEY (`ID_Escolas`) REFERENCES `escolas` (`ID`),
-  ADD CONSTRAINT `escolas_linhas_ibfk_2` FOREIGN KEY (`ID_Linhas`) REFERENCES `linhas` (`ID`);
+  ADD CONSTRAINT `escolas_linhas_ibfk_1` FOREIGN KEY (`IdEscolas`) REFERENCES `escolas` (`ID`),
+  ADD CONSTRAINT `escolas_linhas_ibfk_2` FOREIGN KEY (`IdLinhas`) REFERENCES `linhas` (`ID`);
 
 --
 -- Limitadores para a tabela `linhas`
