@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Nov-2024 às 02:04
+-- Tempo de geração: 14-Nov-2024 às 00:20
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -426,15 +426,15 @@ INSERT INTO `escolas` (`ID`, `Descricao`, `Bairro`, `Rua`, `Complemento`, `Numer
 --
 
 CREATE TABLE `escolas_linhas` (
-  `IdEscolas` int(11) NOT NULL,
-  `IdLinhas` int(11) NOT NULL
+  `id_escolas` int(11) NOT NULL,
+  `id_linhas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `escolas_linhas`
 --
 
-INSERT INTO `escolas_linhas` (`IdEscolas`, `IdLinhas`) VALUES
+INSERT INTO `escolas_linhas` (`id_escolas`, `id_linhas`) VALUES
 (5, 1),
 (5, 2),
 (18, 3),
@@ -547,8 +547,8 @@ ALTER TABLE `escolas`
 -- Índices para tabela `escolas_linhas`
 --
 ALTER TABLE `escolas_linhas`
-  ADD PRIMARY KEY (`IdEscolas`,`IdLinhas`),
-  ADD KEY `IdLinhas` (`IdLinhas`) USING BTREE;
+  ADD PRIMARY KEY (`id_escolas`,`id_linhas`),
+  ADD KEY `IdLinhas` (`id_linhas`) USING BTREE;
 
 --
 -- Índices para tabela `linhas`
@@ -606,8 +606,8 @@ ALTER TABLE `email`
 -- Limitadores para a tabela `escolas_linhas`
 --
 ALTER TABLE `escolas_linhas`
-  ADD CONSTRAINT `escolas_linhas_ibfk_1` FOREIGN KEY (`IdEscolas`) REFERENCES `escolas` (`ID`),
-  ADD CONSTRAINT `escolas_linhas_ibfk_2` FOREIGN KEY (`IdLinhas`) REFERENCES `linhas` (`ID`);
+  ADD CONSTRAINT `escolas_linhas_ibfk_1` FOREIGN KEY (`id_escolas`) REFERENCES `escolas` (`ID`),
+  ADD CONSTRAINT `escolas_linhas_ibfk_2` FOREIGN KEY (`id_linhas`) REFERENCES `linhas` (`ID`);
 
 --
 -- Limitadores para a tabela `linhas`

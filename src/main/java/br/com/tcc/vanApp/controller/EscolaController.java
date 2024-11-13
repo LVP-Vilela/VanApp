@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tcc.vanApp.model.Escola;
+import br.com.tcc.vanApp.model.EscolaLinha;
 import br.com.tcc.vanApp.DAO.IEscola;
 
 @RestController
@@ -47,5 +48,11 @@ public class EscolaController{
 		Optional<Escola> escola = dao.findById(id);
 		dao.deleteById(id);
 		return escola;
+	}
+	
+	@GetMapping("/{idEscolas}")
+	public Escola listaEscolasLinhasPorLinha(@PathVariable Integer idEscolas){
+		Optional<Escola> escola= dao.findById(idEscolas);
+		return  escola.get();
 	}
 }
