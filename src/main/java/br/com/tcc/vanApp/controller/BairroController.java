@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.tcc.vanApp.DAO.IBairro;
 import br.com.tcc.vanApp.model.Bairro;
+import br.com.tcc.vanApp.model.Escola;
 
 @RestController
 @CrossOrigin("*")
@@ -47,5 +48,11 @@ public class BairroController {
 		Optional<Bairro> bairro = dao.findById(id);
 		dao.deleteById(id);
 		return bairro;
+	}
+	
+	@GetMapping("/{idBairros}")
+	public Bairro listaBairrosLinhasPorLinha(@PathVariable Integer idBairros){
+		Optional<Bairro> bairro= dao.findById(idBairros);
+		return  bairro.get();
 	}
 }

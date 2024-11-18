@@ -11,9 +11,14 @@ async function loadPage(condutorCnh){
        
         // Obtém o elemento 'cabecalhoCondutor'
         const selectElement = document.getElementById('cabecalhoCondutor');
+        const selectElementBody = document.getElementById('corpoDiv');
+
         
         let cond = document.createElement("div");
+        let linhas = document.createElement("div");
+
         let HTML;
+        let HTML2='';
           
         // Preenche o HTML com os dados do condutor
         HTML = `
@@ -44,10 +49,34 @@ async function loadPage(condutorCnh){
 
         const responseLinhas = await fetch('http://localhost:8080/linhas/'+jsonData.cnh,{method: "GET"});
         const subJsonLinhas = await responseLinhas.json();
-        subJsonLinhas.forEach(linha => {
+        
+        await Promise.all(subJsonLinhas.map(async (linha) => {
             HTML = HTML + `<li>`    
             if(linha.periodo == "Período da Manhã"){
               HTML = HTML + `<i class="fa fa-coffee w3-margin-right w3-large"></i> ${linha.periodo}`
+
+              HTML2 = `<div class="w3-container w3-card w3-white w3-margin-bottom">
+              <h2 class="w3-container w3-yellow w3-topbar w3-bottombar w3-border-black w3-padding-16"><i class="fa fa-coffee fa-fw w3-margin-right w3-xxlarge"></i>${linha.periodo}</h2>
+              <div class="w3-container">
+                  <div class="w3-half">
+                      <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas</h3>
+                          <ul class="w3-ul w3-padding-16 w3-margin">`;
+              
+              HTML2 = HTML2 + await carregaEscolaLinhas(linha.id);
+
+              HTML2 = HTML2 + `</ul>
+              </div>
+              <div class="w3-half">
+                  <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Bairros</h3>
+                  <ul class="w3-ul w3-padding-16 w3-margin">`
+              
+              HTML2 = HTML2 + await carregaBairroLinhas(linha.id);
+
+              HTML2 = HTML2 + `</ul>
+              </div>
+              </div>
+              </div>`
+
             }else if(linha.periodo == "Período da Tarde"){
               HTML = HTML + `<i class="fa fa-sun-o w3-margin-right w3-large"></i> ${linha.periodo}`
             }else if(linha.periodo == "Período da Noite"){
@@ -61,17 +90,54 @@ async function loadPage(condutorCnh){
               HTML = HTML + `<span class="w3-tag w3-right w3-red">Não há vagas</span>`
             }
             HTML = HTML + `</li>` 
-          });
+          }));
 
         HTML = HTML + `</ul>
         </div>`;
 
         cond.innerHTML = HTML;
+        linhas.innerHTML = HTML2;
         // Adiciona o conteúdo ao elemento
         selectElement.append(cond);
+        selectElementBody.append(linhas);
         
       } else {
         // Se não houver dados no sessionStorage (por exemplo, se alguém acessar diretamente a página)
         console.error('Dados do condutor não encontrados no sessionStorage');
       }   
+}
+
+async function carregaEscolaLinhas(id){
+  const responseEscolasLinha = await fetch('http://localhost:8080/escolaslinhas/'+id,{method: "GET"});
+  const subJsonEscolasLinha = await responseEscolasLinha.json();
+  
+  const escolasHTML = await Promise.all(subJsonEscolasLinha.map(async (escolaLinha) => {
+    const escolaHTML = await carregaEscolas(escolaLinha.idEscolas);
+    return escolaHTML;
+  }));
+
+  return escolasHTML.join('');
+}
+async function carregaEscolas(idEscolas){
+    const responseEscola = await fetch('http://localhost:8080/escolas/'+idEscolas,{method: "GET"});
+    const subJsonEscola = await responseEscola.json();
+    return `<li>${subJsonEscola.desc}</li>`;
+}
+
+async function carregaBairroLinhas(id){
+  const responseBairrosLinha = await fetch('http://localhost:8080/bairroslinhas/'+id,{method: "GET"});
+  const subJsonBairrosLinha = await responseBairrosLinha.json();
+  
+  const bairrosHTML = await Promise.all(subJsonBairrosLinha.map(async (bairroLinha) => {
+    const bairroHTML = await carregaBairros(bairroLinha.idBairros);
+    return bairroHTML;
+  }));
+
+  return bairrosHTML.join('');
+}
+
+async function carregaBairros(idBairros){
+  const responseBairro = await fetch('http://localhost:8080/bairros/'+idBairros,{method: "GET"});
+  const subJsonBairro = await responseBairro.json();
+  return `<li>${subJsonBairro.desc}</li>`;
 }
