@@ -168,7 +168,12 @@ function openCliente() {
 }
 
 async function pesquisar() {
-  const response = await fetch('http://localhost:8080/condutores',{method: "GET"});
+
+  const periodo = document.getElementById('periodoSelect').value;
+  const escola = document.getElementById('escolaSelect').value;
+  const bairro = document.getElementById('bairroSelect').value;
+
+  const response = await fetch(`http://localhost:8080/condutores/filtro?periodo=${periodo}&escola=${escola}&bairro=${bairro}`,{method: "GET"});
   const json = await response.json();
 
 

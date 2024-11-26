@@ -13,7 +13,6 @@ async function loadPage(condutorCnh){
         const selectElement = document.getElementById('cabecalhoCondutor');
         const selectElementBody = document.getElementById('corpoDiv');
 
-        
         let cond = document.createElement("div");
         let linhas = document.createElement("div");
 
@@ -50,47 +49,32 @@ async function loadPage(condutorCnh){
         const responseLinhas = await fetch('http://localhost:8080/linhas/'+jsonData.cnh,{method: "GET"});
         const subJsonLinhas = await responseLinhas.json();
         
-        await Promise.all(subJsonLinhas.map(async (linha) => {
-            HTML = HTML + `<li>`    
-            if(linha.periodo == "Período da Manhã"){
-              HTML = HTML + `<i class="fa fa-coffee w3-margin-right w3-large"></i> ${linha.periodo}`
+        // Usando uma variável local para acumular HTML2 corretamente
+        const linesHTML = await Promise.all(subJsonLinhas.map(async (linha) => {
+          HTML = HTML + `<li>`;
+          if (linha.periodo == "Período da Manhã") {
+              HTML = HTML + `<i class="fa fa-coffee w3-margin-right w3-large"></i> ${linha.periodo}`;
+          } else if (linha.periodo == "Período da Tarde") {
+              HTML = HTML + `<i class="fa fa-sun-o w3-margin-right w3-large"></i> ${linha.periodo}`;
+          } else if (linha.periodo == "Período da Noite") {
+              HTML = HTML + `<i class="fa fa-moon-o w3-margin-right w3-large"></i> ${linha.periodo}`;
+          } else if (linha.periodo == "Período Integral") {
+              HTML = HTML + `<i class="fa fa-clock-o w3-margin-right w3-large"></i> ${linha.periodo}`;
+          }
+          if (linha.possuiVagas) {
+              HTML = HTML + `<span class="w3-tag w3-right w3-green">Há vagas</span>`;
+          } else {
+              HTML = HTML + `<span class="w3-tag w3-right w3-red">Não há vagas</span>`;
+          }
+          HTML = HTML + `</li>`;
 
-              HTML2 = `<div class="w3-container w3-card w3-white w3-margin-bottom">
-              <h2 class="w3-container w3-yellow w3-topbar w3-bottombar w3-border-black w3-padding-16"><i class="fa fa-coffee fa-fw w3-margin-right w3-xxlarge"></i>${linha.periodo}</h2>
-              <div class="w3-container">
-                  <div class="w3-half">
-                      <h3 class="w3-container w3-padding-16 "><i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas</h3>
-                          <ul class="w3-ul w3-padding-16 w3-margin">`;
-              
-              HTML2 = HTML2 + await carregaEscolaLinhas(linha.id);
+          // Agora acumulando as informações de cada linha corretamente
+          const lineHTML = await montaHTML(linha);
+          return lineHTML;  // Retorna o HTML gerado para ser acumulado
 
-              HTML2 = HTML2 + `</ul>
-              </div>
-              <div class="w3-half">
-                  <h3 class="w3-container w3-padding-16 "><i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Bairros</h3>
-                  <ul class="w3-ul w3-padding-16 w3-margin">`
-              
-              HTML2 = HTML2 + await carregaBairroLinhas(linha.id);
+        }));
 
-              HTML2 = HTML2 + `</ul>
-              </div>
-              </div>
-              </div>`
-
-            }else if(linha.periodo == "Período da Tarde"){
-              HTML = HTML + `<i class="fa fa-sun-o w3-margin-right w3-large"></i> ${linha.periodo}`
-            }else if(linha.periodo == "Período da Noite"){
-              HTML = HTML + `<i class="fa fa-moon-o w3-margin-right w3-large"></i> ${linha.periodo}`
-            }else if(linha.periodo == "Período Integral"){
-              HTML = HTML + `<i class="fa fa-clock-o w3-margin-right w3-large"></i> ${linha.periodo}`
-            }
-            if(linha.possuiVagas){
-              HTML = HTML + `<span class="w3-tag w3-right w3-green">Há vagas</span>`
-            }else{
-              HTML = HTML + `<span class="w3-tag w3-right w3-red">Não há vagas</span>`
-            }
-            HTML = HTML + `</li>` 
-          }));
+        HTML2 = linesHTML.join('');
 
         HTML = HTML + `</ul>
         </div>`;
@@ -100,6 +84,7 @@ async function loadPage(condutorCnh){
         // Adiciona o conteúdo ao elemento
         selectElement.append(cond);
         selectElementBody.append(linhas);
+        console.log(linhas);
         
       } else {
         // Se não houver dados no sessionStorage (por exemplo, se alguém acessar diretamente a página)
@@ -140,4 +125,39 @@ async function carregaBairros(idBairros){
   const responseBairro = await fetch('http://localhost:8080/bairros/'+idBairros,{method: "GET"});
   const subJsonBairro = await responseBairro.json();
   return `<li>${subJsonBairro.desc}</li>`;
+}
+
+async function montaHTML(linha) {
+  let HTML = `<div class="w3-container w3-card w3-white w3-margin-bottom">
+      <h2 class="w3-container w3-yellow w3-topbar w3-bottombar w3-border-black w3-padding-16">
+          <i class="fa fa-coffee fa-fw w3-margin-right w3-xxlarge"></i>${linha.periodo}
+      </h2>
+      <div class="w3-container">
+          <div class="w3-half">
+              <h3 class="w3-container w3-padding-16 ">
+                  <i class="fa fa-mortar-board fa-fw w3-margin-right w3-xlarge"></i>Escolas
+              </h3>
+              <ul class="w3-ul w3-padding-16 w3-margin">`;
+
+  // Espera pela função assíncrona carregaEscolaLinhas antes de continuar
+  HTML = HTML + await carregaEscolaLinhas(linha.id);
+
+  HTML = HTML + `</ul>
+          </div>
+          <div class="w3-half">
+              <h3 class="w3-container w3-padding-16 ">
+                  <i class="fa fa-home fa-fw w3-margin-right w3-xlarge"></i>Bairros
+              </h3>
+              <ul class="w3-ul w3-padding-16 w3-margin">`;
+
+  // Espera pela função assíncrona carregaBairroLinhas antes de continuar
+  HTML = HTML + await carregaBairroLinhas(linha.id);
+
+  HTML = HTML + `</ul>
+          </div>
+      </div>
+  </div>`;
+
+  // Retorna o HTML final
+  return HTML;
 }
