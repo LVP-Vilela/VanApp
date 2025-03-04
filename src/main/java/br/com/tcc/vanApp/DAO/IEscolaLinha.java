@@ -10,4 +10,5 @@ import br.com.tcc.vanApp.model.EscolaLinhaID;
 public interface IEscolaLinha extends CrudRepository<EscolaLinha,EscolaLinhaID>{
 
 	List<EscolaLinha> findByIdLinhas(Integer idLinhas);
+	
 }

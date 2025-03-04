@@ -14,11 +14,11 @@ import jakarta.persistence.Table;
 public class EscolaLinha {
 	
 	@Id
-	@Column(name = "IdLinhas")
+	@Column(name = "id_linhas")
 	private Integer idLinhas;
 	
 	@Id
-	@Column(name = "IdEscolas")
+	@Column(name = "id_escolas")
 	private Integer idEscolas;
 
 	public Integer getIdLinhas() {

@@ -69,8 +69,12 @@ async function loadPage(condutorCnh){
           HTML = HTML + `</li>`;
 
           // Agora acumulando as informações de cada linha corretamente
-          const lineHTML = await montaHTML(linha);
-          return lineHTML;  // Retorna o HTML gerado para ser acumulado
+          if(linha.possuiVagas){
+            const lineHTML = await montaHTML(linha);
+            return lineHTML;  // Retorna o HTML gerado para ser acumulado
+          }else{
+            return;
+          }
 
         }));
 

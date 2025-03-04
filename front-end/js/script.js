@@ -1,3 +1,6 @@
+var escolasList = [];
+var bairrosList = [];
+
 function preencherSelectEscolas(jsonData) {
     // Obtém o elemento select pelo ID
     const selectElement = document.getElementById('escolaSelect');
@@ -15,6 +18,7 @@ function preencherSelectEscolas(jsonData) {
     jsonData.forEach(escola => {
       const option = document.createElement('option');
       option.text = escola.desc;
+      escolasList.push(escola)
       selectElement.appendChild(option);
     });
 }
@@ -36,6 +40,7 @@ function preencherSelectBairros(jsonData) {
   jsonData.forEach(bairro => {
     const option = document.createElement('option');
     option.text = bairro.desc;
+    bairrosList.push(bairro)
     selectElement.appendChild(option);
   });
 }
@@ -151,10 +156,9 @@ function openOption(evt, option) {
     tablinks[i].className = tablinks[i].className.replace(" w3-border-yellow", "");
   }
   document.getElementById(option).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-border-yellow";
-
   document.getElementById("Cadastro2").style.display = "none";
   document.getElementById("Cadastro2").style.visibility = "hidden";
+  evt.currentTarget.firstElementChild.className += " w3-border-yellow";
 }
 
 function openCondutor() {
@@ -169,10 +173,22 @@ function openCliente() {
 
 async function pesquisar() {
 
-  const periodo = document.getElementById('periodoSelect').value;
-  const escola = document.getElementById('escolaSelect').value;
-  const bairro = document.getElementById('bairroSelect').value;
+  let periodo = document.getElementById('periodoSelect').value;
+  let escola = document.getElementById('escolaSelect').value;
+  let bairro = document.getElementById('bairroSelect').value;
 
+
+  escolasList.forEach((item, index) => {
+    if(item.desc == escola){
+      escola = item.id;
+    }
+  });
+
+  bairrosList.forEach((item, index) => {
+    if(item.desc == bairro){
+      bairro = item.id;
+    }
+  });
   const response = await fetch(`http://localhost:8080/condutores/filtro?periodo=${periodo}&escola=${escola}&bairro=${bairro}`,{method: "GET"});
   const json = await response.json();
 
@@ -185,10 +201,54 @@ async function pesquisar() {
   window.location.href = "#Pesquisa";
 }
 
-function cadastrar1() {
-  document.getElementById("Cadastro").style.display = "none";
-  document.getElementById("Cadastro2").style.display = "block";
-  document.getElementById("Cadastro2").style.visibility = "visible";
+async function cadastrar1() {
+  
+  let cnhCad = document.getElementById('cnhCad').value;
+  let nomeCad = document.getElementById('nomeCad').value;
+  let cel1Cad = document.getElementById('cel1Cad').value;
+  let cel2Cad = document.getElementById('cel2Cad').value;
+  let email1Cad = document.getElementById('email1Cad').value;
+  let email2Cad = document.getElementById('email2Cad').value;
+  let senhaCad = document.getElementById('senhaCad').value;
+  let confirmaSenhaCad = document.getElementById('confirmaSenhaCad').value;
+
+  const fileInput = document.getElementById('imageUpload');
+  const file = fileInput.files[0];
+
+  if (cnhCad == "" | nomeCad == "" | cel1Cad == "" | email1Cad == "" | senhaCad == "") {
+      alert("Existem campos não preenchidos");
+      return;
+  }
+
+  if(senhaCad != confirmaSenhaCad){
+    alert("A confirmação da senha não é igual a senha inserida");
+  }else{
+    document.getElementById("Cadastro").style.display = "none";
+    document.getElementById("Cadastro2").style.display = "block";
+    document.getElementById("Cadastro2").style.visibility = "visible";
+  }
+}
+
+async function fetchPost(url,data){
+  try {
+    const resposta = await fetch(url, {
+      method: 'POST', // Método HTTP
+      headers: {
+        'Content-Type': 'application/json', // Especifica que estamos enviando JSON
+      },
+      body: JSON.stringify(data), // Corpo da requisição com os dados em formato JSON
+    });
+
+    if (!resposta.ok) {
+      throw new Error('Erro ao fazer requisição');
+    }
+
+    // Resposta da API, que é retornada como JSON
+    const resultado = await resposta.json();
+    return resultado;
+  } catch (erro) {
+    console.error('Erro:', erro);
+  }
 }
 
 function cancelCadastro() {
@@ -198,40 +258,141 @@ function cancelCadastro() {
   document.getElementById("Cadastro").style.visibility = "visible";
 }
 
-async function openEscolasManha() {
-  const response = await fetch('http://localhost:8080/escolas',{method: "GET"});
-  const json = await response.json();
-  preencherEscolasEdit(json);
-
-  document.getElementById("escolasManha").style.visibility = "visible";
-}
-
-function preencherEscolasEdit(jsonData) {
-  // Obtém o elemento select pelo ID
-  const selectElement = document.getElementById('listaEscolasEdit');
-  
-  // Limpa qualquer opção existente
-  selectElement.innerHTML = '';
-
-  // Adiciona as opções do JSON
-  jsonData.forEach(escola => {
-    let esc = document.createElement("li");
-
-    esc.innerHTML = 
-    `<li class="w3-display-container"> ${escola.desc}
-    <span onclick="this.parentElement.style.display='none'"
-    class="w3-button w3-display-right"><i class="fa fa-plus w3-text-green"></i></span>
-    </li>`
-
-    selectElement.append(esc);
-  });
-  
-}
-
 async function selecionaCondutor(cnh) {
   // Armazena os dados no sessionStorage
   sessionStorage.setItem('condutorCnh', cnh);
 
   // Redireciona para a página condutor.html
   window.location.assign('condutor.html');
+}
+
+async function logaCondutor(cnh) {
+  // Armazena os dados no sessionStorage
+  sessionStorage.setItem('condutorCnhEdit', cnh);
+
+  // Redireciona para a página condutor.html
+  window.location.assign('condutorEdit.html');
+}
+
+async function logar(){  
+  let cnhLogin = document.getElementById('cnhLogin').value;
+  let senhaLogin = document.getElementById('senhaLogin').value;
+
+  if (cnhLogin == "" | senhaLogin == "") {
+    alert("Existem campos não preenchidos");
+    return;
+  }
+  const response = await fetch(`http://localhost:8080/condutores/`+cnhLogin,{method: "GET"});
+  const jsonData = await response.json();
+  jsonData.senha = senhaLogin;
+  
+  let resultData = await fetchPost('http://localhost:8080/condutores/login',jsonData)
+
+  if(resultData !== undefined){
+    logaCondutor(resultData.cnh);
+  }else{
+    alert("O usuário ou senha inseridos não existem!");
+  }
+}
+
+async function cadastrar2() {
+  let cnhCad = document.getElementById('cnhCad').value;
+  let nomeCad = document.getElementById('nomeCad').value;
+  let cel1Cad = document.getElementById('cel1Cad').value;
+  let cel2Cad = document.getElementById('cel2Cad').value;
+  let email1Cad = document.getElementById('email1Cad').value;
+  let email2Cad = document.getElementById('email2Cad').value;
+  let senhaCad = document.getElementById('senhaCad').value;
+
+  const fileInput = document.getElementById('imageUpload');
+  const file = fileInput.files[0];
+
+  if (!file) {
+      alert("Por favor, selecione uma imagem.");
+      return;
+  }
+
+  let data = {
+    cnh: cnhCad,
+    name: nomeCad,
+    imgPath: file.name,
+    senha: senhaCad
+  };
+
+  // Aguardando a resposta da API 'condutores' antes de continuar com as outras requisições
+  const resultado = await fetchPost('http://localhost:8080/condutores', data);
+  
+  if (!resultado) {
+    console.error('Falha ao cadastrar condutor.');
+    return;
+  }
+
+  // Após obter o resultado, faça as outras requisições
+  data = { 
+    cnh: resultado.cnh,
+    celular: cel1Cad
+  };
+  await fetchPost('http://localhost:8080/celulares', data);
+
+  data = {
+    cnh: resultado.cnh,
+    celular: cel2Cad
+  };
+  await fetchPost('http://localhost:8080/celulares', data);
+
+  data = {
+    cnh: resultado.cnh,
+    email: email1Cad
+  };
+  await fetchPost('http://localhost:8080/emails', data);
+
+  data = {
+    cnh: resultado.cnh,
+    email: email2Cad
+  };
+  await fetchPost('http://localhost:8080/emails', data);
+
+  // Enviando a imagem após as requisições anteriores
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const apiUrl = 'http://localhost:8080/condutores/uploadImage';  // URL para upload da imagem
+  await fetch(apiUrl, {
+      method: 'POST',
+      body: formData,
+  });
+  
+  data = {
+    possuiVagas: 0,
+    periodo: 'Período da Manhã',
+    cnhCondutor: resultado.cnh
+  }
+  await fetchPost('http://localhost:8080/linhas', data);
+  
+  data = {
+    possuiVagas: 0,
+    periodo: 'Período da Tarde',
+    cnhCondutor: resultado.cnh
+  }
+  await fetchPost('http://localhost:8080/linhas', data);
+
+  data = {
+    possuiVagas: 0,
+    periodo: 'Período Integral',
+    cnhCondutor: resultado.cnh
+  }
+  await fetchPost('http://localhost:8080/linhas', data);
+
+  data = {
+    possuiVagas: 0,
+    periodo: 'Período da Noite',
+    cnhCondutor: resultado.cnh
+  }
+  await fetchPost('http://localhost:8080/linhas', data);
+
+  alert("Cadastro realizado com sucesso");
+
+
+
+  openOption(event,'Login');
 }

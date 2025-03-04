@@ -19,6 +19,9 @@ public class Condutor {
 	@Column(name = "imgpath", length = 200)
 	private String imgPath;
 	
+	@Column(name = "Senha", length = 200, nullable = false)
+	private String senha;
+	
 	public String getCnh() {
 		return cnh;
 	}
@@ -37,7 +40,11 @@ public class Condutor {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
-	
-	
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 }

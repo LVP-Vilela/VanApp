@@ -10,6 +10,8 @@
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 <script src="js/script.js" defer></script>
 </head>
 <body class="w3-light-grey">
@@ -79,17 +81,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
         <div class="w3-row-padding" style="margin:0px -16px;">
           <div class="w3-margin-bottom">
             <label>CNH:</label>
-            <input class="w3-input w3-border">
+            <input type="text" class="w3-input w3-border" id="cnhLogin" maxlength="10">
           </div>
         </div>
         <div class="w3-row-padding" style="margin:0px -16px;">
           <div class="w3-margin-bottom">
             <label>Senha:</label>
-            <input class="w3-input w3-border">
+            <input type="password" class="w3-input w3-border" id="senhaLogin">
           </div>
         </div>
-        <a href="condutorEdit.html" class="w3-right w3-button w3-black" type="submit"><i class="fa fa-arrow-right w3-margin-right"></i> Entrar</a>
       </form> 
+      <button class="w3-right w3-button w3-black" onclick="logar()"><i class="fa fa-arrow-right w3-margin-right"></i> Entrar</button>
     </div>
 
     <div id="Cadastro" class="w3-container w3-white w3-padding-16 option" style="display:none">
@@ -97,41 +99,43 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
         <div class="w3-row-padding" style="margin:8px -16px;">
           <div class="w3-half">
             <label>CNH:</label>
-            <input class="w3-input w3-border">
+            <input type="text" class="w3-input w3-border" id = "cnhCad" maxlength="10">
           </div>
           <div class="w3-half">
             <label>Nome:</label>
-            <input class="w3-input w3-border">
+            <input type="text" class="w3-input w3-border" id = "nomeCad">
           </div>
         </div>
         <div class="w3-row-padding" style="margin:8px -16px;">
           <div class="w3-half">
             <label>Celular 1:</label>
-            <input class="w3-input w3-border" placeholder="(99)99999-9999">
+            <input type="text" class="w3-input w3-border"  id = "cel1Cad">
+            <script type="text/javascript">$("#cel1Cad").mask("(00) 00000-0000");</script>
           </div>
           <div class="w3-half">
             <label>Celular 2:</label>
-            <input class="w3-input w3-border" placeholder="(99)99999-9999">
+            <input type="text" class="w3-input w3-border"  id = "cel2Cad">
+            <script type="text/javascript">$("#cel2Cad").mask("(00) 00000-0000");</script>
           </div>
         </div>
         <div class="w3-row-padding" style="margin:8px -16px;">
           <div class="w3-half">
             <label>Email 1:</label>
-            <input class="w3-input w3-border">
+            <input type="text" class="w3-input w3-border"  id = "email1Cad">
           </div>
           <div class="w3-half">
             <label>Email 2:</label>
-            <input class="w3-input w3-border">
+            <input type="text" class="w3-input w3-border"  id = "email2Cad">
           </div>
         </div>
         <div class="w3-row-padding" style="margin:8px -16px;">
           <div class="w3-half">
             <label>Senha:</label>
-            <input class="w3-input w3-border">
+            <input type="password" class="w3-input w3-border"  id = "senhaCad">
           </div>
           <div class="w3-half">
             <label>Confirmar senha:</label>
-            <input class="w3-input w3-border">
+            <input type="password" class="w3-input w3-border"  id = "confirmaSenhaCad">
           </div>
         </div>
       </form>
@@ -139,12 +143,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     </div> 
 
     <div id="Cadastro2" class="w3-container w3-white w3-padding-16" style="display:none; visibility: hidden">
-      <h2 class="w3-text-red"><b>ATENÇÃO:</b></h2>
-      <h4 class="w3-text-red w3-margin-bottom"><b>Antes de prosseguirmos com seu cadastro nós precisamos validar se você realmente está apto como condutor no sistema da mobilidade urbana, este passo serve para evitarmos que alguém 
-        mal intencionado se passe por um condutor tentando aplicar golpes, ou outro tipo de ação maliciosa, esse procedimento leva até 1 dia útil, após esse prazo é só logar com esse cadastro e definir 
-        sua linhas e horários que serão oferecidos através do site.</b>
-      </h4>
-      <button class="w3-right w3-button w3-black"><i class="fa fa-arrow-right w3-margin-right"></i> Enviar</button>
+      <div class="w3-container w3-white w3-padding-16 w3-center">
+        <input type="file" id="imageUpload" class="w3-button w3-black" />
+      </div>
+        
+
+      <button class="w3-right w3-button w3-black" onclick="cadastrar2()"><i class="fa fa-arrow-right w3-margin-right"></i> Enviar</button>
       <button class="w3-left w3-button w3-black" onclick="cancelCadastro()"><i class="fa fa-times w3-margin-right"></i> Cancelar</button>
        
     </div>
